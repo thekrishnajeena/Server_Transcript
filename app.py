@@ -9,7 +9,7 @@ CORS(app)
 @app.route('/transcript/<video_id>', methods=['GET'])
 def get_transcript(video_id):
     try:
-        transcript_data = YouTubeTranscriptApi.get_transcript(video_id)
+        transcript_data = YouTubeTranscriptApi.get_transcript(video_id, languages=['en'])
         transcript_text = "\n".join(entry["text"] for entry in transcript_data)
         return jsonify({"transcript": transcript_text})
     except Exception as e:
