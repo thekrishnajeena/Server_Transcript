@@ -11,6 +11,7 @@ def get_transcript(video_id):
     try:
         transcript_data = YouTubeTranscriptApi.get_transcript(video_id, languages=['en'])
         transcript_text = "\n".join(entry["text"] for entry in transcript_data)
+        print(transcript_text)
         return jsonify({"transcript": transcript_text})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
